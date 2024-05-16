@@ -1,0 +1,32 @@
+{
+    "name": "Atolycs Container",
+    "image": "mcr.microsoft.com/devcontainers/typescript-node:20-bullseye",
+    
+    "features": {
+        "ghcr.io/devcontainers/features/github-cli:1": {
+            "installDirectlyFromGithubRelease": true,
+            "version": "latest"
+        }
+    },
+
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "GitHub.github-vscode-theme",
+                "VisualStudioExptTeam.vscodeintellicode",
+                "VisualStudioExptTeam.intellicode-api-usage-examples",
+                "ms-vscode.live-server"
+            ],
+            "settings": {
+                "workbench.colorTheme": "GitHub Dark Default"
+            }
+        }
+    },
+
+    "remoteUser": "root",
+    "onCreateCommand": "mkdir -p ~/.config",
+    "postCreateCommand": "/bin/sh .devcontainer/postCreateCommand.sh" ,
+    "mounts": [
+        "source=${localEnv:HOME}/.config/gh,target=/root/.config/gh,type=bind",
+    ]
+}
